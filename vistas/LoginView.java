@@ -8,6 +8,7 @@ import java.awt.Insets;
 import java.awt.event.*;
 import javax.swing.*;
 import ventanas.*;
+import control.*;
 
 public class LoginView {
 
@@ -36,13 +37,13 @@ public class LoginView {
         panelLogin.add(titulo, gbc);
 
         // Entrada de correo
-        JTextField entradaCorreo = new JTextField("Usuario: ");
+        JTextField entradaCorreo = new JTextField();
         gbc.gridx = 1;
         gbc.gridy = 1;
         panelLogin.add(entradaCorreo, gbc);
 
         // Entrada contraseña
-        JPasswordField entradaContra = new JPasswordField("Contraseña: ");
+        JPasswordField entradaContra = new JPasswordField();
         entradaContra.setSize(new Dimension(100, 50));
         gbc.gridx = 1;
         gbc.gridy = 2;
@@ -57,14 +58,21 @@ public class LoginView {
         gbc.fill = GridBagConstraints.NONE;
         panelLogin.add(entradaBoton, gbc);
 
-        // Acción del botón
-        entradaBoton.addActionListener(new ActionListener() {
+      entradaBoton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
-                frame.dispose(); 
+
+                String entradadUsuario=entradaCorreo.getText();
+                String entradaContraseña=entradaContra.getText();
+
+                if ( new LoginControler().validacionDatos(entradadUsuario, entradaContraseña)) {
+                         frame.dispose(); 
                 new DashBoard(); 
+                }
+           
             }
         });
+   
     }
 
     public JPanel getJPanel(){
