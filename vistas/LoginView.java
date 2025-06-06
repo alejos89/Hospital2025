@@ -13,10 +13,7 @@ import control.*;
 public class LoginView {
 
     private JPanel panelLogin;
-    private JFrame frame; 
     public LoginView(JFrame frame){ 
-        this.frame = frame; 
-
         panelLogin = new JPanel();
         panelLogin.setSize(500,800);
         panelLogin.setOpaque(true);
